@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homilias | Pe. Eli Marcel de Abreu, SdC</title>
+  <style>
+    :root {
+      --marrom: #5b3825;
+      --marrom-escuro: #2d1b12;
+      --dourado: #b48a3c;
+      --creme: #f5eadb;
+      --creme-claro: #fffaf2;
+      --vinho: #7d2435;
+      --texto: #2b241f;
+      --sombra: rgba(45, 27, 18, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: linear-gradient(180deg, #fffaf2 0%, #f3e4d0 100%);
+      color: var(--texto);
+      line-height: 1.75;
+    }
+
+    header {
+      background: linear-gradient(120deg, rgba(45,27,18,.88), rgba(91,56,37,.72)), url('santa.png') center/cover;
+      min-height: 76vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .hero-box {
+      max-width: 920px;
+      background: rgba(45, 27, 18, 0.55);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 28px;
+      padding: 44px 32px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 20px 50px var(--sombra);
+    }
+
+    .marca {
+      width: min(680px, 100%);
+      margin: 0 auto 26px;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      margin: 0 0 12px;
+      line-height: 1.08;
+      letter-spacing: .02em;
+    }
+
+    .subtitulo {
+      font-family: Arial, sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      margin: 0 auto 24px;
+      max-width: 760px;
+    }
+
+    .botao {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      text-decoration: none;
+      color: var(--marrom-escuro);
+      background: var(--creme);
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(0,0,0,.2);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 250, 242, .96);
+      border-bottom: 1px solid #e6d4bd;
+      backdrop-filter: blur(8px);
+      font-family: Arial, sans-serif;
+      padding: 12px 18px;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--marrom);
+      text-decoration: none;
+      font-weight: 700;
+      margin: 0 12px;
+      white-space: nowrap;
+    }
+
+    section {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 54px 20px;
+    }
+
+    .card {
+      background: var(--creme-claro);
+      border: 1px solid #e8d7c0;
+      border-radius: 26px;
+      padding: clamp(24px, 4vw, 44px);
+      box-shadow: 0 18px 40px var(--sombra);
+    }
+
+    h2 {
+      color: var(--marrom);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin: 0 0 18px;
+    }
+
+    h3 {
+      color: var(--vinho);
+      font-size: 1.45rem;
+      margin-top: 36px;
+    }
+
+    .meta {
+      font-family: Arial, sans-serif;
+      color: #66544a;
+      border-left: 5px solid var(--dourado);
+      padding-left: 16px;
+      margin: 22px 0 30px;
+    }
+
+    blockquote {
+      margin: 28px 0;
+      padding: 24px 28px;
+      background: #f1dfc6;
+      border-left: 6px solid var(--dourado);
+      border-radius: 18px;
+      font-size: 1.18rem;
+      color: var(--marrom-escuro);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      align-items: center;
+    }
+
+    .foto {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 18px 36px var(--sombra);
+    }
+
+    .homilia p {
+      margin: 0 0 18px;
+      font-size: 1.08rem;
+    }
+
+    .divisor {
+      text-align: center;
+      color: var(--dourado);
+      font-size: 2rem;
+      margin: 36px 0;
+      letter-spacing: .3em;
+    }
+
+    .lista-homilias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .item-homilia {
+      background: #fffaf2;
+      border: 1px solid #e8d7c0;
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .item-homilia a {
+      color: var(--vinho);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.15rem;
+    }
+
+    footer {
+      background: var(--marrom-escuro);
+      color: var(--creme);
+      text-align: center;
+      padding: 34px 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    .pequeno { font-size: .92rem; opacity: .82; }
+
+    @media (max-width: 760px) {
+      header {
+        min-height: auto;
+        padding: 22px 14px;
+        background-position: center top;
+      }
+
+      .hero-box {
+        padding: 22px 16px;
+        border-radius: 22px;
+      }
+
+      .marca {
+        margin-bottom: 18px;
+        border-radius: 14px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitulo {
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      nav {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        justify-content: flex-start;
+        padding: 10px 12px;
+      }
+
+      nav a {
+        margin: 0;
+        padding: 8px 12px;
+        background: #f1dfc6;
+        border-radius: 999px;
+        font-size: .9rem;
+      }
+
+      section {
+        padding: 34px 14px;
+      }
+
+      .card {
+        padding: 22px 16px;
+        border-radius: 20px;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      .meta {
+        font-size: .95rem;
+      }
+
+      blockquote {
+        padding: 18px 16px;
+        font-size: 1rem;
+      }
+
+      .homilia p {
+        font-size: 1rem;
+        line-height: 1.72;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .foto {
+        border-radius: 18px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .botao {
+        width: 100%;
+        text-align: center;
+        padding: 12px 14px;
+      }
+
+      .homilia p {
+        font-size: .98rem;
+      }
+    }
+
+    @media print {
+      nav, header .botao { display: none; }
+      header { min-height: auto; padding: 20px; }
+      .card { box-shadow: none; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+  <header id="topo">
+    <div class="hero-box">
+      <img class="marca" src="paroquia.png" alt="Paróquia Santa Teresinha, Cruzeiro Novo, Brasília-DF" />
+      <h1>Homilias do Pe. Eli Marcel de Abreu, SdC</h1>
+      <p class="subtitulo">Coleção de pregações da Paróquia Santa Teresinha, no Cruzeiro Novo, Brasília-DF. Um espaço para guardar, ler e revisitar palavras de fé, esperança e vida cristã.</p>
+      <a class="botao" href="#homilia-2026-05-01">Ler a primeira homilia</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#apresentacao">Apresentação</a>
+    <a href="#homilias">Homilias</a>
+    <a href="#homilia-2026-05-01">Página da Homilia</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <section id="apresentacao">
+    <div class="grid">
+      <div>
+        <h2>Palavras guardadas com fidelidade</h2>
+        <p>Este site nasce para reunir as homilias do Pe. Eli Marcel de Abreu, SdC, preservando o conteúdo das pregações e sua força pastoral.</p>
+        <p>A proposta é organizar cada homilia com data, liturgia, local, horário e texto transcrito, formando uma coleção viva da caminhada espiritual da comunidade.</p>
+      </div>
+      <img class="foto" src="padre2.png" alt="Pe. Eli Marcel de Abreu durante celebração" />
+    </div>
+  </section>
+
+  <section id="homilias">
+    <div class="card">
+      <h2>Homilias disponíveis</h2>
+      <p>Cada homilia terá sua própria página dentro do site, com cabeçalho litúrgico, texto integral, identificação da paróquia e espaço para fonte da transcrição.</p>
+      <div class="lista-homilias">
+        <div class="item-homilia">
+          <a href="#homilia-2026-05-01">Abrir página da homilia de 1º de maio de 2026</a>
+          <p>Sexta-feira da 3ª Semana da Páscoa<br />Missa Votiva em honra a Santa Teresinha<br />Evangelho: João 14, 1-6</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="homilia-2026-05-01">
+    <article class="card homilia">
+      <p class="pequeno"><a href="#homilias" style="color: var(--vinho); font-weight: 700; text-decoration: none;">← Voltar para a lista de homilias</a></p>
+      <h2>1º de maio de 2026</h2>
+      <div class="meta">
+        Sexta-feira da 3ª Semana da Páscoa<br />
+        Missa Votiva em honra a Santa Teresinha • 19h<br />
+        Paróquia Santa Teresinha — Cruzeiro Novo, Brasília-DF<br />
+        Evangelho: João 14, 1-6<br />
+        Homilia: Pe. Eli Marcel de Abreu, SdC
+      </div>
+
+      <blockquote>
+        “Não se perturbe o vosso coração. Tendes fé em Deus; tendes fé também em mim. Na casa do meu Pai há muitas moradas.”<br />
+        <strong>Jo 14, 1-2</strong>
+      </blockquote>
+
+      <p>Essa frase aqui do Evangelho.</p>
+      <p>Não se perturbe o vosso coração. Tendes fé em Deus. Tendes fé em mim também. Na casa do meu Pai há muitas moradas.</p>
+      <p>Onde vocês já ouviram essa leitura? Em que ocasião?</p>
+      <p>Nos velórios, né? É.</p>
+      <p>E a gente associou essa leitura aos velórios, à morte.</p>
+      <p>Porque Jesus diz aos seus apóstolos: Na casa do meu Pai há muitas moradas.</p>
+      <p>Mas isso não é só para quem morreu. É para quem está vivo.</p>
+      <p>Ou vocês não querem ir para lá?</p>
+      <p>Ou vocês compraram uma casa aqui e estão achando que essa casa vocês vão conseguir levar ela para lá?</p>
+      <p>Vocês já compraram terreno no céu ou não? Estou vendendo. Está em promoção. Mês de Maria, Maria faz uma promoção para vocês. Terreninho no céu.</p>
+      <p>Então, na casa do meu Pai há muitas moradas.</p>
+      <p>E quando eu for, eu quero que vocês também possam ir até lá. Eu quero estar com vocês.</p>
+      <p>Olha o que diz Jesus, a maravilha.</p>
+      <p>Isso gera em nós, deve gerar em nós esperança da vida eterna.</p>
+      <p>Ele já está preparando para nós um lugar.</p>
+      <p>Quando vai ser a nossa hora? Não sei. Pode ser hoje. Pode ser amanhã. Ai, padre, Deus me livre. E não pode? Quem sabe?</p>
+      <p>Para morrer basta... Aí, vocês até sabem o ditado.</p>
+      <p>Então, Ele está preparando um lugar para você e para mim.</p>
+      <p>Porém, para chegar nesse lugar, nós é que temos que dar os passinhos.</p>
+      <p>Jesus não faz a nossa parte. Atenção. A nossa parte, Ele não faz. Nós temos que fazer.</p>
+      <p>Só que se nós colocamos em porcentagem, a parte de Jesus em nossa vida é 99%. E a nossa parte é só 1%.</p>
+      <p>E o que acontece com a maioria de nós, os seres humanos? A gente não faz a nossa parte, que é 1%, e depois fica brigando, questionando Deus, porque Ele já fez os 99% da parte dEle, que foi morrer na cruz.</p>
+      <p>E falou assim: na casa do meu Pai há muitas moradas. E tantas outras promessas que Ele nos deixou da vida eterna.</p>
+      <p>Ele já fez e continua fazendo, como nos discípulos de Emaús, continua caminhando ao nosso lado.</p>
+      <p>A parte dEle, Ele faz.</p>
+      <p>A gente não faz a nossa, que é só 1%. E ainda, muitas vezes, se queixa com Deus.</p>
+      <p>Porque Ele me esqueceu, porque Deus não escuta as minhas orações. E blá, blá, blá, blá, blá, blá.</p>
+      <p>E o que significa isso? Eu estou longe de Deus. Eu não rezo mais.</p>
+      <p>Eu, quando tenho um churrasquinho, alguma coisa, jogo de futebol, eu não vou na missa. Eu só vou quando tem algum evento especial. Eu só vou quando eu preciso. Eu só vou quando eu tenho vontade.</p>
+      <p>E reclamo com Deus que Ele não está fazendo a parte dEle.</p>
+      <p>Mas vai catar coquinho, como diz por aí. Ou como diz aquele bispo, né? Vai tomar banho nas praias de Maceió.</p>
+      <p>Façamos a nossa parte.</p>
+      <p>É difícil? É.</p>
+      <p>É mais fácil falar: eu quero curtir, é festa. O mundo oferece tanta coisa.</p>
+      <p>Aqui tem água mineral, tem o lago Paranoá. Eu não conheço muito bem ainda, estou chegando agora. Mas tem tantas opções.</p>
+      <p>E a gente se priva de muitas coisas para estar aqui. No redil das ovelhas. Falamos do bom pastor semana passada. Abrimos mão de tudo isso para estar aqui.</p>
+      <p>Para quê? Para ir buscando esse nosso lugarzinho lá. Não por merecimento.</p>
+      <p>Não é que agora: ah, eu vou ir porque meu lugar está lá, eu mereço. Não. É por graça de Deus que tudo isso acontece.</p>
+
+      <h3>O Caminho</h3>
+      <p>E Jesus disse: Para onde eu vou vocês já sabem o caminho.</p>
+      <p>Tomé? Não, nós não sabemos.</p>
+      <p>E essa frase que Jesus fala é lindíssima. E nunca sai de moda. Nenhuma palavra da Bíblia sai de moda. Mas essa frase é muito linda:</p>
+      <p>Eu sou o caminho, a verdade e a vida. Ninguém vai ao Pai senão por mim.</p>
+      <p>Caminho.</p>
+      <p>Quantos caminhos nós buscamos? E Ele é o caminho. Ele é o caminho.</p>
+      <p>Às vezes nós nos desviamos do caminho. E Ele nos traz para junto dEle, que é o caminho.</p>
+      <p>Às vezes nós buscamos caminhos que vão nos afastando cada vez mais de Deus.</p>
+      <p>Porque Deus é aquela luz que brilha no caminho. É um caminho reto e plano.</p>
+      <p>Mas aí eu vou andando, eu vou andando e olhando para essa luz que é Jesus.</p>
+      <p>Tem carioca aqui? Quem é carioca? Levanta a mão.</p>
+      <p>A música que o carioca mais gosta é essa aqui, né? Minha luz é Jesus e Jesus me conduz pelos caminhos da paz.</p>
+      <p>Então eu vou caminhando nessa luz que é Jesus e vou olhando para Ele. Estou fixo.</p>
+      <p>Daqui a pouco brilha uma luz aqui. Opa, o que é isso? Não, Jesus.</p>
+      <p>Mas começa a brilhar mais forte. Cara, deixa eu dar uma averiguada aqui, né? Aí, pá, caí no pecado. Vou lá e me confesso. Volto para a luz que é Jesus.</p>
+      <p>Daqui a pouco é outra luz aqui e outra ali. E eu vou me perdendo, às vezes, no caminho da vida.</p>
+      <p>E pode ser que eu entre em um caminho de uma luz paralela e não consiga mais voltar para essa luz que é Jesus.</p>
+      <p>Então aí eu tenho que ter cuidado, prudência.</p>
+      <p>Às vezes, quando a gente vai se confessar — e quando eu também vou me confessar — eu já sei. Porque a recomendação que eu dou para quem vai se confessar, ela serve para mim também quando eu vou me confessar.</p>
+      <p>Porque, às vezes, quando os padres se confessam um com o outro, já não fala nada. Você já sabe já. Você já sabe o que tem que fazer já. Vai lá e volta à sua vida de seguidor de Jesus.</p>
+      <p>Então, nós devemos evitar a ocasião do pecado. E, às vezes, a ocasião do pecado está numa luz que brilhou mais bonito ali do lado. E aí eu perco o foco da luz que é Jesus.</p>
+      <p>Ele é o caminho.</p>
+
+      <h3>A Verdade e a Vida</h3>
+      <p>A verdade.</p>
+      <p>Quantas vezes, às vezes, nós queremos tudo ser provado. Eu quero que tudo seja como São Tomé. Eu tenho que ver para crer.</p>
+      <p>A verdade é Jesus. Ele é a verdade.</p>
+      <p>O próprio Santo Agostinho buscava a verdade toda a sua vida. E depois ele descobriu, ele escreve na sua autobiografia, que a verdade estava nele mesmo, onde habita o próprio Deus, do qual nós somos imagem e semelhança.</p>
+      <p>E a vida que Ele nos deu de presente e que nós devemos valorizar e viver essa vida sempre buscando a Jesus. Caminho, verdade e vida.</p>
+
+      <h3>A Santidade no Ordinário</h3>
+      <p>E quando nós celebramos um santo, hoje, por exemplo, missa votiva da nossa padroeira Santa Teresinha. Depois, também hoje, São José, no título de operário, aquele que ensinou a Jesus o início de valorizar aquilo que é feito em casa, na oficina.</p>
+      <p>São José, imagina a missão que ele teve: educar o Filho de Deus. Então, através do trabalho também, essa é a nossa devoção.</p>
+      <p>E quando nós olhamos para a vida dos santos, nós vemos que eles trilharam esse caminho, que é Jesus.</p>
+      <p>Mas nenhum deles deixou de se desviar em algum momento. Nenhum.</p>
+      <p>Só Maria. Só Maria foi preservada do pecado e imaculada.</p>
+      <p>Os outros santos, todos eles tiveram algum deslize. Nós não sabemos, muitas vezes, não está na história. E não precisa estar também.</p>
+      <p>Mas eles conseguiram chegar a essa morada que Jesus prometeu ali no Evangelho de hoje. Na casa do meu Pai há muitas moradas.</p>
+      <p>E como é que eles conseguiram? Com a sua vida.</p>
+      <p>Meu povo, atenção: Não precisa fazer nada de extraordinário na vida para ser santo. Nada.</p>
+      <p>O que Santa Teresinha fez na vida dela de extraordinário? Ela fez algum evento gigantesco que reuniu muita gente? Ela fez algo assim que chamou atenção? Não.</p>
+      <p>Lá no convento. Aliás, ela quase não saiu do convento e é padroeira de quem? Dos missionários.</p>
+      <p>Padroeira dos missionários que andam pelo mundo sem ter saído do convento.</p>
+      <p>Então, nós não precisamos fazer nada extraordinário. Nós precisamos viver santamente o ordinário. Ou seja, o dia a dia.</p>
+      <p>Então, quando eu acordo de manhã: Senhor, esse dia eu quero viver santamente. Me ajuda. Vou fazer minhas orações, vou para o meu trabalho. Enfim, vou cumprir o meu dia.</p>
+      <p>Quando eu chego no final do dia, eu faço o meu exame de consciência e falo: Será que eu cumpri?</p>
+      <p>Por isso que é importante colocar no nosso dia a dia, nas nossas orações, o exame de consciência da noite.</p>
+      <p>A oração das Completas tem esse nome porque completa o dia. É no final do dia, das nove para frente. Antes de dormir, eu vou lá, faço a minha oração, faço o meu exame de consciência.</p>
+      <p>O que eu fiz hoje que foi bom, eu quero repetir, quero continuar. O que não foi tão bom, eu quero mudar para amanhã.</p>
+      <p>Às vezes nós fazemos propósitos, como é na quaresma. Mas quantos de nós, por exemplo, na última quaresma, não fizemos lindos propósitos… Mas quando chegou na segunda semana, metade já tinha caído.</p>
+      <p>Oh, meu Deus. Estava no confessionário. Eu mesmo. Não consegui.</p>
+      <p>E é o dia a dia que nos leva à santidade.</p>
+      <p>Eu posso realizar algo maravilhoso, ser conhecido. Como tem muitas pessoas hoje que fazem eventos, e está tudo bem. Sacerdotes, religiosas, leigos conhecidos pela sua evangelização. Mas nós não precisamos disso.</p>
+      <p>Deus talvez esteja utilizando eles para levar mais pessoas a Ele. Mas eu, no meu ordinário, no meu dia a dia…</p>
+      <p>E por isso os santos nos inspiram. Nos mostram o caminho para que eu possa seguir.</p>
+      <p>Se foi possível para eles, no caso hoje São José e Santa Teresinha, é possível para mim também. Eu posso ser santo igualzinho a Santa Teresinha. Eu posso um dia estar lá no céu ao lado dela.</p>
+      <p>As mesmas condições eu tenho. As mesmas dificuldades eu tenho. Ela no tempo dela, na vocação dela. Eu no meu tempo hoje, na minha vocação. Casado, sacerdote, seja o que for.</p>
+
+      <h3>Conclusão</h3>
+      <p>Então, nós precisamos somente não tirar do nosso foco espiritual, que é Ele.</p>
+      <p>Jesus, o caminho, a verdade e a vida. É Ele que eu devo seguir. É Ele que eu devo colocar como prioridade na minha vida.</p>
+      <p>E quando eu desviar por alguma luz que brilha mais, retomo e volto a esse caminho, essa luz que é Jesus.</p>
+      <p>Assim seja.</p>
+
+      <div class="divisor">✝ ✝ ✝</div>
+      <p><strong>Pe. Eli Marcel de Abreu, SdC</strong><br />Paróquia Santa Teresinha — Cruzeiro Novo, Brasília-DF</p>
+    <p class="pequeno"><strong>Fonte:</strong> PASCOM - Youtube da Paróquia de Santa Terezinha. <a href="https://www.youtube.com/@santateresinhacruzeiro" target="_blank" rel="noopener">Canal oficial</a></p>
+    </article>
+  </section>
+
+  <section id="contato">
+    <div class="card">
+      <h2>Sobre esta coleção</h2>
+      <p>Uma iniciativa de Ricardo de Faria Barros para preservar e organizar as homilias do Pe. Eli Marcel de Abreu, SdC, na Paróquia Santa Teresinha, Cruzeiro Novo, Brasília-DF.</p>
+      <p>O site será organizado como uma coleção: uma página inicial com a lista das homilias e uma página própria para cada celebração.
+      <p><strong>Contato:</strong> ricardo@animodh.com.br</p>
+      <p class="pequeno">Contato para este projeto: ricardo@animodh.com.br</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Homilias • Pe. Eli Marcel de Abreu, SdC</p>
+    <p class="pequeno">Paróquia Santa Teresinha — Cruzeiro Novo, Brasília-DF</p>
+  </footer>
+</body>
+</html>
